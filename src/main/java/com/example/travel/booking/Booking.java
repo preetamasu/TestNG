@@ -3,6 +3,16 @@ package com.example.travel.booking;
 import com.example.travel.destination.Destination;
 import com.example.travel.member.Member;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 
 @Entity
 public class Booking {
@@ -26,9 +36,9 @@ name="member_id"
             )
     private Destination destination;
 
-    private Double checkin;
+    private LocalDate checkin;
 
-    private Double checkout;
+    private LocalDate checkout;
 
     private Double pointsUsed;
 }

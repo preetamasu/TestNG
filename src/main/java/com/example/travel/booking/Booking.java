@@ -2,6 +2,7 @@ package com.example.travel.booking;
 
 import com.example.travel.destination.Destination;
 import com.example.travel.member.Member;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,12 +24,14 @@ public class Booking {
     )
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(
 name="member_id"
     )
     private Member member;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
             (
@@ -40,5 +43,5 @@ name="member_id"
 
     private LocalDate checkout;
 
-    private Double pointsUsed;
+    private int pointsUsed;
 }

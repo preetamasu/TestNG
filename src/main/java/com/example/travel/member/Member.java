@@ -19,7 +19,7 @@ public class Member {
             strategy = GenerationType.IDENTITY
     )
     private Long id;
-    private String name;
+    private String memberName;
     private String email;
     private Double pointBalance;
 

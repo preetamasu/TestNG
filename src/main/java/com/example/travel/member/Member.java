@@ -1,12 +1,12 @@
 package com.example.travel.member;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.travel.booking.Booking;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -22,5 +22,11 @@ public class Member {
     private String name;
     private String email;
     private Double pointBalance;
+
+    @OneToMany
+            (
+                    mappedBy = "member"
+            )
+    private List<Booking> bookings;
 
 }

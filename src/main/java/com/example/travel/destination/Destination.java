@@ -1,12 +1,12 @@
 package com.example.travel.destination;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.travel.booking.Booking;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +23,12 @@ public class Destination {
     private String name;
     private String country;
     private Integer roomPricePerNight;
+
+    @OneToMany
+            (
+                    mappedBy ="destination"
+            )
+    public List<Booking> bookings;
 
 
 }

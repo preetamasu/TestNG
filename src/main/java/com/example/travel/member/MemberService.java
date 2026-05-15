@@ -25,7 +25,7 @@ public class MemberService {
     public MemberResponse saveMember(CreateRequestDTO createRequestDTO){
         Member member = new Member();
 
-        member.setMemberName(createRequestDTO.name());
+        member.setMemberName(createRequestDTO.memberName());
         member.setEmail(createRequestDTO.email());
         member.setPointBalance(createRequestDTO.pointBalance());
 

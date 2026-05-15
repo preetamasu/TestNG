@@ -1,4 +1,4 @@
 package com.example.travel.member;
 
-public record CreateRequestDTO(String name,String email,Double pointBalance) {
+public record CreateRequestDTO(String memberName,String email,Double pointBalance) {
 }

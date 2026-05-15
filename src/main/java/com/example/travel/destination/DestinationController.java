@@ -27,7 +27,7 @@ public class DestinationController {
         return new ResponseEntity<>(destinationService.getDestinationById(id),HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/saving")
     public ResponseEntity<DestinationResponse> saveDestination(@RequestBody DestinationRequestDTO destinationRequestDTO){
         return new ResponseEntity<>(destinationService.saveDestination(destinationRequestDTO),HttpStatus.CREATED);
     }

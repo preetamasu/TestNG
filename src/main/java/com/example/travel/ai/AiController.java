@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/ai")
 public class AiController {
 
-    private final AiRecommendationService aiRecommendationService;
+    private final AiRecommendationService2 aiRecommendationService2;
 
-    public AiController(AiRecommendationService aiRecommendationService){
-        this.aiRecommendationService = aiRecommendationService;
+    public AiController(AiRecommendationService2 aiRecommendationService2){
+        this.aiRecommendationService2 = aiRecommendationService2;
     }
 
     @PostMapping("/recommendations")
 
     public ResponseEntity<AiRecommendationResponse> recommendation(@RequestBody AiRecommendationRequest aiRecommendationRequest){
-        return new ResponseEntity<>(aiRecommendationService.recommend(aiRecommendationRequest), HttpStatus.OK);
+        return new ResponseEntity<>(aiRecommendationService2.recommend(aiRecommendationRequest), HttpStatus.OK);
     }
 }

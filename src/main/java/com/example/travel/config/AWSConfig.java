@@ -1,6 +1,6 @@
 package com.example.travel.config;
 
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
@@ -11,26 +11,15 @@ import software.amazon.awssdk.services.bedrockruntime.BedrockRuntimeClient;
 
 @Configuration
 public class AWSConfig {
-    @Value("${cloud.aws.credentials.access-key}")
-    private String accessKey;
 
-    private String secretKey;
-
+    @Value("${aws.region}")
     private String region;
 
-    public AwsCredentialsProvider awsCredentialsProvider(){
-        AwsCredentialsProvider awsCredentialsProvider = StaticCredentialsProvider.create(
-                AwsBasicCredentials.create(accessKey,secretKey)
-
-        );
-        return awsCredentialsProvider;
-    }
 
     @Bean
     public BedrockRuntimeClient bedrockRuntimeClient(){
         return BedrockRuntimeClient.builder()
                 .region(Region.of(region))
-                .credentialsProvider(awsCredentialsProvider())
                 .build();
     }
 }

@@ -5,7 +5,7 @@ import com.example.travel.destination.Destination;
 import com.example.travel.destination.DestinationRepository;
 import com.example.travel.member.Member;
 import com.example.travel.member.MemberRepository;
-import com.example.travel.member.MemberResponse;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.temporal.ChronoUnit;
@@ -23,6 +23,7 @@ public class BookingService {
         this.destinationRepository = destinationRepository;
     }
 
+    @Transactional
     public BookingResponse createBooking(BookingRequestDTO bookingRequestDTO){
         Booking booking = new Booking();
 
@@ -73,8 +74,6 @@ public class BookingService {
                 booking.getCheckout(),
                 booking.getPointsUsed(),
                 booking.getMember().getPointBalance()
-
-
         );
     }
 }

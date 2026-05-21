@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/ai")
 public class AiController {
 
-    private final AiRecommendationService2 aiRecommendationService2;
+   // private final AiRecommendationService2 aiRecommendationService2;
 
-    public AiController(AiRecommendationService2 aiRecommendationService2){
+    /*public AiController(AiRecommendationService2 aiRecommendationService2){
         this.aiRecommendationService2 = aiRecommendationService2;
     }
 
@@ -20,5 +20,5 @@ public class AiController {
 
     public ResponseEntity<AiRecommendationResponse> recommendation(@RequestBody AiRecommendationRequest aiRecommendationRequest){
         return new ResponseEntity<>(aiRecommendationService2.recommend(aiRecommendationRequest), HttpStatus.OK);
-    }
+    }*/
 }

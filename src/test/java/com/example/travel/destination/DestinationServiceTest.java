@@ -83,4 +83,18 @@ class DestinationServiceTest {
         verify(destinationRepository,times(1)).findById(1L);
 
     }
+    @Test
+    void returnNullIfIdNotExists(){
+        Long id = 1L;
+
+        when(destinationRepository.findById(id)).thenReturn(Optional.empty());
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                ()-> destinationService.getDestinationById(id)
+        );
+
+        assertEquals("Destination not found",exception.getMessage());
+        verify(destinationRepository,times(1)).findById(id);
+
+    }
 }

@@ -5,13 +5,16 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class DestinationServiceTest {
@@ -19,12 +22,9 @@ class DestinationServiceTest {
     @Mock
     private DestinationRepository destinationRepository;
 
+    @InjectMocks
     private DestinationService destinationService;
 
-    @BeforeEach
-    void setUp(){
-        destinationService = new DestinationService(destinationRepository);
-    }
 
     @Test
     void getAllDestinations() {
@@ -64,7 +64,23 @@ class DestinationServiceTest {
     }
 
     @Test
-    @Disabled
-    void getDestinationById() {
+    void getDestinationByIfIdIsPresent() {
+
+        Destination destination = new Destination();
+        destination.setId(1L);
+        destination.setName("Hello");
+        destination.setCountry("IN");
+        destination.setRoomPricePerNight(2000);
+
+        when(destinationRepository.findById(1L)).thenReturn(Optional.of(destination));
+
+        DestinationResponse response = destinationService.getDestinationById(1L);
+        assertNotNull(response);
+
+        assertEquals(response.name(),destination.getName());
+        assertEquals(response.roomPricePerNight(),destination.getRoomPricePerNight());
+        assertEquals(response.country(),destination.getCountry());
+        verify(destinationRepository,times(1)).findById(1L);
+
     }
 }

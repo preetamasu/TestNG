@@ -1,4 +1,4 @@
-package com.example.demo.destination;
+package com.example.travel.destination;
 
 import com.example.travel.destination.DestinationController;
 import com.example.travel.destination.DestinationRequestDTO;
